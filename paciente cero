@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Misión Biología: El Paciente Cero - ODS 3</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Atkinson Hyperlegible', sans-serif;
+            background-color: #f0fdf4; /* Verde muy claro */
+            color: #1e293b;
+            touch-action: manipulation;
+        }
+
+        .tab-btn {
+            transition: all 0.2s ease;
+            border-bottom: 4px solid transparent;
+        }
+        
+        .tab-active-1 { border-bottom-color: #22c55e; background-color: #dcfce7; color: #166534; font-weight: bold; }
+        .tab-active-2 { border-bottom-color: #3b82f6; background-color: #dbeafe; color: #1e40af; font-weight: bold; }
+        .tab-active-3 { border-bottom-color: #a855f7; background-color: #f3e8ff; color: #6b21a8; font-weight: bold; }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hidden-content { display: none; }
+    </style>
+</head>
+<body class="p-4 flex flex-col items-center min-h-screen justify-center">
+
+    <div class="max-w-2xl w-full bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+        
+        <!-- Cabecera ODS 3 -->
+        <div class="bg-green-600 text-white p-6 text-center relative">
+            <h1 class="text-3xl font-bold mb-2">Caso Clínico: El Paciente Cero 🔬</h1>
+            <p class="text-green-100 text-lg">Objetivo 3: Salud y Bienestar</p>
+            <button onclick="readAloud('intro-text')" class="mt-4 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full text-sm font-bold flex items-center justify-center gap-2 mx-auto transition-colors">
+                <span>🔊</span> Escuchar introducción
+            </button>
+            <p id="intro-text" class="hidden">El sedentarismo y los problemas de salud mental aumentan. Elige tu nivel de investigación para analizar la situación del Paciente Cero y proponer soluciones biológicas.</p>
+        </div>
+
+        <!-- Selector de Niveles (DUA: Múltiples formas de implicación) -->
+        <div class="flex border-b border-slate-200">
+            <button onclick="showLevel(1)" id="btn-1" class="tab-btn tab-active-1 flex-1 py-4 px-2 text-center text-sm md:text-base text-slate-600 hover:bg-slate-50">
+                <div class="text-2xl mb-1">🧭</div>
+                Nivel 1<br>Explorador
+            </button>
+            <button onclick="showLevel(2)" id="btn-2" class="tab-btn flex-1 py-4 px-2 text-center text-sm md:text-base text-slate-600 hover:bg-slate-50 border-l border-slate-200">
+                <div class="text-2xl mb-1">🔍</div>
+                Nivel 2<br>Analista
+            </button>
+            <button onclick="showLevel(3)" id="btn-3" class="tab-btn flex-1 py-4 px-2 text-center text-sm md:text-base text-slate-600 hover:bg-slate-50 border-l border-slate-200">
+                <div class="text-2xl mb-1">🧬</div>
+                Nivel 3<br>Especialista
+            </button>
+        </div>
+
+        <!-- Contenido Dinámico -->
+        <div class="p-6 md:p-8 bg-slate-50">
+            
+            <!-- NIVEL 1 -->
+            <div id="level-1" class="fade-in">
+                <div class="flex justify-between items-start mb-4">
+                    <h2 class="text-2xl font-bold text-green-700">Identificación y Clasificación</h2>
+                    <button onclick="readAloud('text-lvl-1')" class="text-2xl bg-white rounded-full p-2 shadow-sm border border-slate-200 hover:bg-slate-100">🔊</button>
+                </div>
+                <div id="text-lvl-1">
+                    <p class="text-slate-700 text-lg mb-6 leading-relaxed">
+                        <strong>Tu misión:</strong> Analiza una batería de hábitos diarios del Paciente Cero. Debes clasificarlos en "Factores Protectores" o "Factores de Riesgo" para el bienestar físico y mental.
+                    </p>
+                    <div class="bg-white p-5 rounded-xl border-l-4 border-green-500 shadow-sm">
+                        <h3 class="font-bold text-slate-800 mb-3">Elige tu forma de entrega (DUA):</h3>
+                        <ul class="space-y-2 text-slate-700">
+                            <li class="flex items-center gap-2"><span>✅</span> Esquema visual colaborativo (pizarra o digital).</li>
+                            <li class="flex items-center gap-2"><span>✅</span> Clasificación manipulativa con tarjetas físicas.</li>
+                            <li class="flex items-center gap-2"><span>✅</span> Grabación de un breve diario de audio.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NIVEL 2 -->
+            <div id="level-2" class="fade-in hidden-content">
+                <div class="flex justify-between items-start mb-4">
+                    <h2 class="text-2xl font-bold text-blue-700">Comprensión y Aplicación</h2>
+                    <button onclick="readAloud('text-lvl-2')" class="text-2xl bg-white rounded-full p-2 shadow-sm border border-slate-200 hover:bg-slate-100">🔊</button>
+                </div>
+                <div id="text-lvl-2">
+                    <p class="text-slate-700 text-lg mb-6 leading-relaxed">
+                        <strong>Tu misión:</strong> Investiga el historial clínico del Paciente Cero. Identifica qué metas del ODS 3 se vulneran y diagnostica el impacto biológico de su estilo de vida en sus órganos.
+                    </p>
+                    <div class="bg-white p-5 rounded-xl border-l-4 border-blue-500 shadow-sm">
+                        <h3 class="font-bold text-slate-800 mb-3">Elige tu forma de entrega (DUA):</h3>
+                        <ul class="space-y-2 text-slate-700">
+                            <li class="flex items-center gap-2"><span>✅</span> Redacción de una "Receta médica" justificando cambios.</li>
+                            <li class="flex items-center gap-2"><span>✅</span> Mapa mental de causas y consecuencias biológicas.</li>
+                            <li class="flex items-center gap-2"><span>✅</span> Role-play médico-paciente (opción de usar vocabulario en francés).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NIVEL 3 -->
+            <div id="level-3" class="fade-in hidden-content">
+                <div class="flex justify-between items-start mb-4">
+                    <h2 class="text-2xl font-bold text-purple-700">Evaluación y Creación</h2>
+                    <button onclick="readAloud('text-lvl-3')" class="text-2xl bg-white rounded-full p-2 shadow-sm border border-slate-200 hover:bg-slate-100">🔊</button>
+                </div>
+                <div id="text-lvl-3">
+                    <p class="text-slate-700 text-lg mb-6 leading-relaxed">
+                        <strong>Tu misión:</strong> Selecciona un problema de salud detectado en el entorno escolar derivado del caso del Paciente Cero. Diseña una estrategia basada en la biología para mitigarlo.
+                    </p>
+                    <div class="bg-white p-5 rounded-xl border-l-4 border-purple-500 shadow-sm">
+                        <h3 class="font-bold text-slate-800 mb-3">Elige tu forma de entrega (DUA):</h3>
+                        <ul class="space-y-2 text-slate-700">
+                            <li class="flex items-center gap-2"><span>✅</span> Diseño de una infografía científica detallada.</li>
+                            <li class="flex items-center gap-2"><span>✅</span> Boceto de una app o simulador interactivo de salud.</li>
+                            <li class="flex items-center gap-2"><span>✅</span> Grabación de campaña de salud pública (opción bilingüe).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Script de Lógica y Accesibilidad -->
+    <script>
+        function showLevel(level) {
+            // Ocultar todos los contenidos
+            document.getElementById('level-1').classList.add('hidden-content');
+            document.getElementById('level-2').classList.add('hidden-content');
+            document.getElementById('level-3').classList.add('hidden-content');
+            
+            // Quitar estilos activos de todos los botones
+            const btn1 = document.getElementById('btn-1');
+            const btn2 = document.getElementById('btn-2');
+            const btn3 = document.getElementById('btn-3');
+            
+            btn1.className = "tab-btn flex-1 py-4 px-2 text-center text-sm md:text-base text-slate-600 hover:bg-slate-50";
+            btn2.className = "tab-btn flex-1 py-4 px-2 text-center text-sm md:text-base text-slate-600 hover:bg-slate-50 border-l border-slate-200";
+            btn3.className = "tab-btn flex-1 py-4 px-2 text-center text-sm md:text-base text-slate-600 hover:bg-slate-50 border-l border-slate-200";
+
+            // Mostrar el nivel seleccionado y aplicar estilo activo
+            const activeContent = document.getElementById('level-' + level);
+            activeContent.classList.remove('hidden-content');
+            
+            // Forzar reflow para que la animación funcione cada vez
+            void activeContent.offsetWidth; 
+            
+            if(level === 1) document.getElementById('btn-1').classList.add('tab-active-1');
+            if(level === 2) document.getElementById('btn-2').classList.add('tab-active-2');
+            if(level === 3) document.getElementById('btn-3').classList.add('tab-active-3');
+            
+            // Detener lectura en voz alta si se cambia de pestaña
+            window.speechSynthesis.cancel();
+        }
+
+        // Lector de voz (Accesibilidad DUA)
+        function readAloud(elementId) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel(); // Detener si ya está hablando
+                const text = document.getElementById(elementId).innerText;
+                const msg = new SpeechSynthesisUtterance();
+                msg.text = text;
+                msg.lang = 'es-ES';
+                msg.rate = 1.0;
+                window.speechSynthesis.speak(msg);
+            } else {
+                alert("Lo siento, tu navegador no soporta la lectura en voz alta.");
+            }
+        }
+    </script>
+</body>
+</html>
